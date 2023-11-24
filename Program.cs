@@ -1,4 +1,5 @@
 using Demo1.Data;
+using Demo1.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("OtherStoreConections"));
 });
 
+builder.Services.AddTransient<IProductService, ProductService>();
 
 var app = builder.Build();
 
